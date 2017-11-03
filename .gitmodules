@@ -1,3 +1,6 @@
 [submodule "raspberrypi/tools"]
 	path = raspberrypi/tools
 	url = https://github.com/raspberrypi/tools.git
+[submodule "thirdparty/libmodbus"]
+	path = thirdparty/libmodbus
+	url = https://github.com/stephane/libmodbus.git

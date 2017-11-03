@@ -9,10 +9,10 @@ set(CMAKE_PREFIX_PATH ${CMAKE_SOURCE_DIR}/usr/${MULTIARCH_TUPLE})
 
 # Check for Raspberry Pi Tools or set from defaults if they don't have it
 if(DEFINED ENV{PI_TOOLS_HOME})
-    message("Using Raspberry Pi Tools found in $ENV{PI_TOOLS_HOME}")
+    message("Using Raspberry Pi Tools set up in $ENV{PI_TOOLS_HOME}")
 else(DEFINED ENV{PI_TOOLS_HOME})
     set(ENV{PI_TOOLS_HOME} ${CMAKE_SOURCE_DIR}/raspberrypi/tools)
-    message("Using Raspberry Pi Tools found in $ENV{PI_TOOLS_HOME}")
+    message("Using Raspberry Pi Tools expected in $ENV{PI_TOOLS_HOME}")
 endif(DEFINED ENV{PI_TOOLS_HOME})
 
 set(TOOLCHAIN_PATH $ENV{PI_TOOLS_HOME}/arm-bcm2708/${MULTIARCH_TUPLE})
