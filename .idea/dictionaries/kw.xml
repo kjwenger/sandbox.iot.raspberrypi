@@ -1,10 +1,16 @@
 <component name="ProjectDictionaryState">
   <dictionary name="kw">
     <words>
+      <w>armv</w>
+      <w>autoconf</w>
+      <w>automake</w>
+      <w>crosstool</w>
       <w>gnueabi</w>
       <w>hardfp</w>
       <w>libmodbus</w>
+      <w>libtoolize</w>
       <w>multiarch</w>
+      <w>raspberrypi</w>
     </words>
   </dictionary>
 </component>

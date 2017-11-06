@@ -13,15 +13,17 @@ LIBMODBUS_DIR="${PROJECT_DIR}/thirdparty/libmodbus"
 
 cd "${LIBMODBUS_DIR}"
 make -j ${CPUS} distclean
-export MULTIARCH_TUPLE=arm-linux-gnueabihf
-export CC="${MULTIARCH_TUPLE}-gcc"
-export LD="${MULTIARCH_TUPLE}-ld"
-export AS="${MULTIARCH_TUPLE}-as"
+export MULTIARCH_TUPLE="armv8-rpi3-linux-gnueabihf"
+export SYSROOT="${HOME}/x-tools/${MULTIARCH_TUPLE}"
+export CC="${SYSROOT}/bin/${MULTIARCH_TUPLE}-gcc"
+export LD="${SYSROOT}/bin/${MULTIARCH_TUPLE}-ld"
+export AS="${SYSROOT}/bin/${MULTIARCH_TUPLE}-as"
 chmod +x ./autogen.sh
 ./autogen.sh
 chmod +x ./configure
 ac_cv_func_malloc_0_nonnull=yes ac_cv_func_realloc_0_nonnull=yes \
 ./configure \
+    --with-sysroot="${HOME}/x-tools/${MULTIARCH_TUPLE}" \
     --host="${MULTIARCH_TUPLE}" \
     --prefix="${USR_DIR}/${MULTIARCH_TUPLE}"
 make -j ${CPUS}

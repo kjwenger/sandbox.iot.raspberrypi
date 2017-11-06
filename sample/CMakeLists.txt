@@ -22,7 +22,7 @@ include_directories(
         /usr/include
 )
 
-#find_package(Modbus)
+set(MODBUS_LIBRARY ${CMAKE_PREFIX_PATH}/lib/libmodbus.so)
 
 add_executable(modbus-master
         src/modbus-master.c
@@ -33,8 +33,7 @@ target_include_directories(modbus-master PUBLIC
         ${MODBUS_INCLUDE_DIRS}
 )
 target_link_libraries(modbus-master
-#        ${MODBUS_LIBRARY}
-        modbus
+        ${MODBUS_LIBRARY}
 )
 
 add_executable(modbus-slave
@@ -46,8 +45,7 @@ target_include_directories(modbus-slave PUBLIC
         ${MODBUS_INCLUDE_DIRS}
 )
 target_link_libraries(modbus-slave
-#        ${MODBUS_LIBRARY}
-        modbus
+        ${MODBUS_LIBRARY}
 )
 
 find_package(Threads)
@@ -60,7 +58,6 @@ target_include_directories(test_485 PUBLIC
         ${MODBUS_INCLUDE_DIRS}
 )
 target_link_libraries(test_485
-#        ${MODBUS_LIBRARY}
-        modbus
+        ${MODBUS_LIBRARY}
         ${CMAKE_THREAD_LIBS_INIT}
 )
