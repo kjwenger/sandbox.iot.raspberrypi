@@ -22,6 +22,7 @@ include_directories(
         /usr/include
 )
 
+set(MODBUS_INCLUDE_DIRS ${CMAKE_PREFIX_PATH}/include/modbus)
 set(MODBUS_LIBRARY ${CMAKE_PREFIX_PATH}/lib/libmodbus.so)
 
 add_executable(modbus-master

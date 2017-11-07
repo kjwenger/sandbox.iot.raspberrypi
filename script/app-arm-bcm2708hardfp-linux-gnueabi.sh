@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -x
+#set -x
 
 CPUS=$(lscpu | grep "^CPU(s):" | sed s/"CPU(s):                "//)
 
