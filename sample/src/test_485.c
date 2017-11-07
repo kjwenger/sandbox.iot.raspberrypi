@@ -413,12 +413,12 @@ int main(int argc, char *argv[])
 
 	fd = OpenDev(device);
 
-	fd_rse = open("/dev/ctl_io",O_RDWR);
-	if(fd_rse < 0)
-	{
-		perror("open error");
-		exit(1);
-	}
+//	fd_rse = open("/dev/ctl_io",O_RDWR);
+//	if(fd_rse < 0)
+//	{
+//		perror("open error");
+//		exit(1);
+//	}
 
 	shownInformation();
 
