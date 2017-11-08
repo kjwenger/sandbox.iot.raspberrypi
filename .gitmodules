@@ -4,3 +4,6 @@
 [submodule "thirdparty/libmodbus"]
 	path = thirdparty/libmodbus
 	url = https://github.com/stephane/libmodbus.git
+[submodule "mbpoll"]
+	path = mbpoll
+	url = https://github.com/epsilonrt/mbpoll

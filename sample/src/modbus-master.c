@@ -21,13 +21,13 @@ int main(int argc, char* argv[]) {
     }
 
     //Set the Modbus address of the remote slave (to 3)
-    modbus_set_slave(ctx, 3);
+    modbus_set_slave(ctx, 1);
 
 
     uint16_t reg[5];// will store read registers values
 
-    //Read 5 holding registers starting from address 10
-    int num = modbus_read_registers(ctx, 10, 5, reg);
+    //Read 5 holding registers starting from address 64
+    int num = modbus_read_registers(ctx, 50, 2, reg);
     if (num != 5) {// number of read registers is not the one expected
         fprintf(stderr, "Failed to read: %s\n", modbus_strerror(errno));
     }
