@@ -20,11 +20,11 @@ cmake \
       -DOPENSSL_ROOT_DIR="${STAGING_DIR}" \
       -DOPENSSL_FOUND=true \
       -DOPENSSL_INCLUDE_DIR="${STAGING_DIR}/include" \
-      -DOPENSSL_CRYPTO_LIBRARY="${STAGING_DIR}/lib/libcrypto.so.1.1" \
-      -DOPENSSL_CRYPTO_LIBRARIES="${STAGING_DIR}/lib/libcrypto.so.1.1" \
-      -DOPENSSL_SSL_LIBRARY="${STAGING_DIR}/lib/libssl.so.1.1" \
-      -DOPENSSL_SSL_LIBRARIES="${STAGING_DIR}/lib/libssl.so.1.1" \
-      -DOPENSSL_LIBRARIES="${STAGING_DIR}/lib/libcrypto.so;${STAGING_DIR}/lib/libssl.so.1.1" \
+      -DOPENSSL_CRYPTO_LIBRARY="${STAGING_DIR}/lib/libcrypto.so" \
+      -DOPENSSL_CRYPTO_LIBRARIES="${STAGING_DIR}/lib/libcrypto.so" \
+      -DOPENSSL_SSL_LIBRARY="${STAGING_DIR}/lib/libssl.so" \
+      -DOPENSSL_SSL_LIBRARIES="${STAGING_DIR}/lib/libssl.so" \
+      -DOPENSSL_LIBRARIES="${STAGING_DIR}/lib/libcrypto.so;${STAGING_DIR}/lib/libssl.so" \
       -DMOSQUITTO_INCLUDE_DIRS="${STAGING_DIR}/include" \
       -DMOSQUITTO_LIBRARY="${STAGING_DIR}/lib/libmosquitto.so" \
       -DMOSQUITTOPP_INCLUDE_DIRS="${STAGING_DIR}/include" \
