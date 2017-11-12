@@ -25,6 +25,10 @@ cmake \
       -DOPENSSL_SSL_LIBRARY="${STAGING_DIR}/lib/libssl.so.1.1" \
       -DOPENSSL_SSL_LIBRARIES="${STAGING_DIR}/lib/libssl.so.1.1" \
       -DOPENSSL_LIBRARIES="${STAGING_DIR}/lib/libcrypto.so;${STAGING_DIR}/lib/libssl.so.1.1" \
+      -DMOSQUITTO_INCLUDE_DIRS="${STAGING_DIR}/include" \
+      -DMOSQUITTO_LIBRARY="${STAGING_DIR}/lib/libmosquitto.so" \
+      -DMOSQUITTOPP_INCLUDE_DIRS="${STAGING_DIR}/include" \
+      -DMOSQUITTOPP_LIBRARY="${STAGING_DIR}/lib/libmosquittopp.so" \
       -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON \
       -DCMAKE_TOOLCHAIN_FILE="${PROJECT_DIR}/toolchains/${MULTIARCH_TUPLE}.cmake" \
       -DCMAKE_INSTALL_PREFIX="${STAGING_DIR}" \
