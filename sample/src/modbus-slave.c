@@ -1,6 +1,6 @@
 // https://stackoverflow.com/questions/29602698/create-a-simple-client-server-using-modbus-in-c
 
-#include <modbus.h>
+#include <modbus/modbus.h>
 #include <stdio.h>
 #include <errno.h>
 #include <stdlib.h>

@@ -1,11 +1,11 @@
-cmake_minimum_required(VERSION 2.6)
+cmake_minimum_required(VERSION 3.2)
 project(sandbox-iot-raspberrypi)
 
 set(CMAKE_CONFIGURATION_TYPES "Debug;Release;Debug-armhf" CACHE STRING "" FORCE)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/")
 
 if (NOT DEFINED CMAKE_PREFIX_PATH)
-    set(CMAKE_PREFIX_PATH ${CMAKE_SOURCE_DIR}/usr)
+    set(CMAKE_PREFIX_PATH ${CMAKE_SOURCE_DIR}/staging)
 endif (NOT DEFINED CMAKE_PREFIX_PATH)
 
 if(CMAKE_COMPILER_IS_GNUCC)
@@ -22,8 +22,15 @@ include_directories(
         /usr/include
 )
 
-set(MODBUS_INCLUDE_DIRS ${CMAKE_PREFIX_PATH}/include/modbus)
-set(MODBUS_LIBRARY ${CMAKE_PREFIX_PATH}/lib/libmodbus.so)
+find_package(Modbus)
+
+if(MODBUS_FOUND)
+    message("Modbus includes found at ${MODBUS_INCLUDE_DIRS} and library at ${MODBUS_LIBRARY}")
+else()
+    set(MODBUS_INCLUDE_DIRS ${CMAKE_PREFIX_PATH}/include/modbus)
+    set(MODBUS_LIBRARY ${CMAKE_PREFIX_PATH}/lib/libmodbus.so)
+    message("Modbus includes set to ${MODBUS_INCLUDE_DIRS} and library to ${MODBUS_LIBRARY}")
+endif()
 
 add_executable(modbus-master
         src/modbus-master.c

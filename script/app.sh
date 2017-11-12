@@ -7,7 +7,7 @@ CPUS=$(lscpu | grep "^CPU(s):" | sed s/"CPU(s):                "//)
 CURRENT_DIR="$(pwd)"
 SCRIPTS_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_DIR="$(dirname "${SCRIPTS_DIR}")"
-USR_DIR="${PROJECT_DIR}/usr"
+STAGING_DIR="${PROJECT_DIR}/staging"
 
 cd "${PROJECT_DIR}"
 mkdir -p build

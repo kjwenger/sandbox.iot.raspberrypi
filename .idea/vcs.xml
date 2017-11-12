@@ -5,5 +5,7 @@
     <mapping directory="$PROJECT_DIR$/mbpoll" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/raspberrypi/tools" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/thirdparty/libmodbus" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/thirdparty/mosquitto" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/thirdparty/openssl" vcs="Git" />
   </component>
 </project>

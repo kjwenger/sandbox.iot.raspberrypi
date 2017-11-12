@@ -1,0 +1,1 @@
+set(OPENSSL_ROOT_DIR "C:/install/mylib" CACHE INTERNAL "" FORCE)

@@ -8,7 +8,7 @@ CURRENT_DIR="$(pwd)"
 THIRDPARTY_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 SCRIPTS_DIR="$(dirname "${THIRDPARTY_DIR}")"
 PROJECT_DIR="$(dirname "${SCRIPTS_DIR}")"
-USR_DIR="${PROJECT_DIR}/usr"
+STAGING_DIR="${PROJECT_DIR}/staging"
 LIBMODBUS_DIR="${PROJECT_DIR}/thirdparty/libmodbus"
 
 cd "${LIBMODBUS_DIR}"
@@ -25,7 +25,7 @@ ac_cv_func_malloc_0_nonnull=yes ac_cv_func_realloc_0_nonnull=yes \
 ./configure \
     --with-sysroot="${HOME}/x-tools/${MULTIARCH_TUPLE}" \
     --host="${MULTIARCH_TUPLE}" \
-    --prefix="${USR_DIR}/${MULTIARCH_TUPLE}"
+    --prefix="${STAGING_DIR}/${MULTIARCH_TUPLE}"
 make -j ${CPUS}
 make -j ${CPUS} install
 cd "${CURRENT_DIR}"

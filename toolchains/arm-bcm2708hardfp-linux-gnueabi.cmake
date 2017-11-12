@@ -5,7 +5,7 @@ set(CMAKE_SYSTEM_NAME Linux)
 set(MULTIARCH_TUPLE arm-bcm2708hardfp-linux-gnueabi)
 
 # which system root to use
-set(CMAKE_PREFIX_PATH ${CMAKE_SOURCE_DIR}/usr/${MULTIARCH_TUPLE})
+set(CMAKE_PREFIX_PATH ${CMAKE_SOURCE_DIR}/staging/${MULTIARCH_TUPLE})
 
 # Check for Raspberry Pi Tools or set from defaults if they don't have it
 if(DEFINED ENV{PI_TOOLS_HOME})

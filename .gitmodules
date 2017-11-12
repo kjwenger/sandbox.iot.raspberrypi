@@ -7,3 +7,9 @@
 [submodule "mbpoll"]
 	path = mbpoll
 	url = https://github.com/epsilonrt/mbpoll
+[submodule "thirdparty/mosquitto"]
+	path = thirdparty/mosquitto
+	url = https://github.com/eclipse/mosquitto.git
+[submodule "thirdparty/openssl"]
+	path = thirdparty/openssl
+	url = https://github.com/openssl/openssl

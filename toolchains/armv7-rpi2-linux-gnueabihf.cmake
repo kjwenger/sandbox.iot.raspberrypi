@@ -7,7 +7,7 @@ SET(CMAKE_SYSTEM_VERSION 1)
 set(MULTIARCH_TUPLE armv7-rpi2-linux-gnueabihf)
 
 # which system root to use
-set(CMAKE_PREFIX_PATH ${CMAKE_SOURCE_DIR}/usr/${MULTIARCH_TUPLE})
+set(CMAKE_PREFIX_PATH ${CMAKE_SOURCE_DIR}/staging/${MULTIARCH_TUPLE})
 
 # specify the cross compiler
 SET(CMAKE_C_COMPILER   $ENV{HOME}/x-tools/${MULTIARCH_TUPLE}/bin/${MULTIARCH_TUPLE}-gcc)

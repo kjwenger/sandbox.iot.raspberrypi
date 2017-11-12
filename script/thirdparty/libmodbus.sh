@@ -13,17 +13,11 @@ LIBMODBUS_DIR="${PROJECT_DIR}/thirdparty/libmodbus"
 
 cd "${LIBMODBUS_DIR}"
 make -j ${CPUS} distclean
-export MULTIARCH_TUPLE=arm-linux-gnueabihf
-export CC="${MULTIARCH_TUPLE}-gcc"
-export LD="${MULTIARCH_TUPLE}-ld"
-export AS="${MULTIARCH_TUPLE}-as"
 chmod +x ./autogen.sh
 ./autogen.sh
 chmod +x ./configure
-ac_cv_func_malloc_0_nonnull=yes ac_cv_func_realloc_0_nonnull=yes \
 ./configure \
-    --host="${MULTIARCH_TUPLE}" \
-    --prefix="${STAGING_DIR}/${MULTIARCH_TUPLE}"
+    --prefix="${STAGING_DIR}"
 make -j ${CPUS}
 make -j ${CPUS} install
 cd "${CURRENT_DIR}"
