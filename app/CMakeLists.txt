@@ -9,12 +9,9 @@ if (NOT DEFINED CMAKE_PREFIX_PATH)
 endif (NOT DEFINED CMAKE_PREFIX_PATH)
 
 find_package(OpenSSL)
-
-set(MOSQUITTO_INCLUDE_DIRS ${CMAKE_PREFIX_PATH}/include)
-set(MOSQUITTO_LIBRARY ${CMAKE_PREFIX_PATH}/lib/libmosquitto.so)
-
-set(MOSQUITTOPP_INCLUDE_DIRS ${CMAKE_PREFIX_PATH}/include)
-set(MOSQUITTOPP_LIBRARY ${CMAKE_PREFIX_PATH}/lib/libmosquittopp.so)
+find_package(Mosquitto)
+find_package(Mosquittopp)
+find_package(Threads)
 
 file(GLOB INCLUDE
         include/*.hpp
@@ -26,10 +23,6 @@ add_executable(sandbox-iot-raspberrypi
         ${INCLUDE}
         ${SRC}
 )
-add_dependencies(sandbox-iot-raspberrypi
-        ${MOSQUITTOPP_INCLUDE_DIRS}
-        ${MOSQUITTO_INCLUDE_DIRS}
-)
 include_directories(
         ${CMAKE_CURRENT_SOURCE_DIR}/include
         ${MOSQUITTOPP_INCLUDE_DIRS}
@@ -40,7 +33,6 @@ include_directories(
         /usr/include/jsoncpp
         /usr/include
 )
-find_package(Threads)
 target_link_libraries(sandbox-iot-raspberrypi
         ${MOSQUITTOPP_LIBRARY}
         ${MOSQUITTO_LIBRARY}
