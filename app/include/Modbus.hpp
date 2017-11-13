@@ -11,7 +11,8 @@ class ModbusError : public std::exception
 public:
     explicit ModbusError(const char * what);
     explicit ModbusError(const std::string & what);
-    virtual const char * what() const _GLIBCXX_TXN_SAFE_DYN _GLIBCXX_USE_NOEXCEPT override;
+    virtual const char * what()
+        const _GLIBCXX_TXN_SAFE_DYN _GLIBCXX_USE_NOEXCEPT override;
 private:
     std::string _what;
 };
