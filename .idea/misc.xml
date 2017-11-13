@@ -8,5 +8,12 @@
       <file path="$PROJECT_DIR$/test/include" />
       <file path="$PROJECT_DIR$/test/src" />
     </sourceRoots>
+    <excludeRoots>
+      <file path="$PROJECT_DIR$/.build" />
+      <file path="$PROJECT_DIR$/.vscode" />
+      <file path="$PROJECT_DIR$/build" />
+      <file path="$PROJECT_DIR$/build-armv7-rpi2-linux-gnueabihf" />
+      <file path="$PROJECT_DIR$/tmp" />
+    </excludeRoots>
   </component>
 </project>

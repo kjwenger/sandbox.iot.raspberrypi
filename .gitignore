@@ -43,6 +43,7 @@
 /cmake-build-debug/
 
 # Build
+/.build/
 /staging/
 build/
 build-arm-linux-gnueabihf/

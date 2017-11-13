@@ -9,7 +9,7 @@ endif (NOT DEFINED CMAKE_PREFIX_PATH)
 
 #add_subdirectory(thirdparty)
 
-#add_subdirectory(sample)
+add_subdirectory(sample)
 
 #add_subdirectory(test)
 

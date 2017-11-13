@@ -14,20 +14,22 @@ PROJECT_DIR="$(dirname "${SCRIPTS_DIR}")"
 BUILD_DIR="${PROJECT_DIR}/build-${MULTIARCH_TUPLE}"
 
 sshpass -p "${PASSWORD}" \
-scp "${BUILD_DIR}/sample/modbus-master" \
+scp \
+    "${BUILD_DIR}/sample/modbus-master" \
     "${BUILD_DIR}/sample/modbus-slave" \
     "${BUILD_DIR}/sample/test_485" \
+    "${BUILD_DIR}/app/sandbox-iot-raspberrypi" \
     "${USER}@${HOST}:/home/${USER}"
 
-sshpass -p "${PASSWORD}" \
-ssh "${USER}@${HOST}" \
-    "echo '${PASSWORD}' | sudo -S mkdir -p /com.u14n/development/projects/sandbox/sandbox.iot/sandbox.iot.beaglebone/sample/src/"
-
-sshpass -p "${PASSWORD}" \
-ssh "${USER}@${HOST}" \
-    "echo '${PASSWORD}' | sudo -S chown -R ${USER}:${USER} /com.u14n"
-
-sshpass -p "${PASSWORD}" \
-scp -r \
-    "${PROJECT_DIR}/sample/src/"* \
-    "${USER}@${HOST}:/com.u14n/development/projects/sandbox/sandbox.iot/sandbox.iot.beaglebone/sample/src/"
+#sshpass -p "${PASSWORD}" \
+#ssh "${USER}@${HOST}" \
+#    "echo '${PASSWORD}' | sudo -S mkdir -p /com.u14n/development/projects/sandbox/sandbox.iot/sandbox.iot.raspberrypi/sample/src/"
+#
+#sshpass -p "${PASSWORD}" \
+#ssh "${USER}@${HOST}" \
+#    "echo '${PASSWORD}' | sudo -S chown -R ${USER}:${USER} /com.u14n"
+#
+#sshpass -p "${PASSWORD}" \
+#scp -r \
+#    "${PROJECT_DIR}/sample/src/"* \
+#    "${USER}@${HOST}:/com.u14n/development/project

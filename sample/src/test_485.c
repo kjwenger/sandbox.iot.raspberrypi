@@ -14,6 +14,7 @@
 #include <getopt.h>
 #include <string.h>
 #include <stdlib.h>
+#include <pthread.h>
 
 #define TITLE "485 TEST"
 #define FALSE 1

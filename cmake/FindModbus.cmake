@@ -1,88 +1,55 @@
-# - Find Modbus library
-# Find the Modbus headers and libraries.
+# - Try to find libmodbus
+# Once done this will define
 #
-#  MODBUS_INCLUDE_DIRS - where to find modbus.h
-#  MODBUS_LIBRARIES    - List of libraries when using modbus.
-#  MODBUS_FOUND        - True if modbus library found.
+#  MODBUS_FOUND - system has MODBUS
+#  MODBUS_INCLUDE_DIR - the MODBUS include directory
+#  MODBUS_LIBRARIES - Link these to use MODBUS
+
+# Copyright (c) 2006, Jasem Mutlaq <mutlaqja@ikarustech.com>
+# Based on FindLibfacile by Carsten Niehaus, <cniehaus@gmx.de>
 #
+# Redistribution and use is allowed according to the terms of the BSD license.
+# For details see the accompanying COPYING-CMAKE-SCRIPTS file.
 
-# Based on Findquatlib.cmake, Original Author:
-# 2009-2010 Ryan Pavlik <rpavlik@iastate.edu> <abiryan@ryand.net>
-# http://academic.cleardefinition.com
-# Iowa State University HCI Graduate Program/VRAC
-#
-# Copyright Iowa State University 2009-2010.
-# Distributed under the Boost Software License, Version 1.0.
-# (See accompanying file LICENSE_1_0.txt or copy at
-# http://www.boost.org/LICENSE_1_0.txt)
+if (MODBUS_INCLUDE_DIR AND MODBUS_LIBRARIES)
 
-set(MODBUS_ROOT_DIR
-        "${MODBUS_ROOT_DIR}"
-        CACHE
-        PATH
-        "Root directory to search for libmodbus")
+  # in cache already
+  set(MODBUS_FOUND TRUE)
+  message(STATUS "Found libmodbus: ${MODBUS_LIBRARIES}")
 
-if("${CMAKE_SIZEOF_VOID_P}" MATCHES "8")
-    set(_libsuffixes lib64 lib)
+else (MODBUS_INCLUDE_DIR AND MODBUS_LIBRARIES)
 
-    # 64-bit dir: only set on win64
-    file(TO_CMAKE_PATH "$ENV{ProgramW6432}" _progfiles)
-else()
-    set(_libsuffixes lib)
-    set(_PF86 "ProgramFiles(x86)")
-    if(NOT "$ENV{${_PF86}}" STREQUAL "")
-        # 32-bit dir: only set on win64
-        file(TO_CMAKE_PATH "$ENV{${_PF86}}" _progfiles)
-    else()
-        # 32-bit dir on win32, useless to us on win64
-        file(TO_CMAKE_PATH "$ENV{ProgramFiles}" _progfiles)
-    endif()
-endif()
+  find_path(MODBUS_INCLUDE_DIR modbus.h
+    PATH_SUFFIXES modbus
+    ${_obIncDir}
+    ${GNUWIN32_DIR}/include
+  )
 
-# Look for the header file.
-find_path(MODBUS_INCLUDE_DIR
-        NAMES
-        modbus/modbus.h
-        modbus.h
-        HINTS
-        "${MODBUS_ROOT_DIR}"
-        PATH_SUFFIXES
-        include
-        PATHS
-        "${_progfiles}/libmodbus"
-        C:/usr/local
-        /usr/local)
+  find_library(MODBUS_LIBRARIES NAMES modbus
+    PATHS
+    ${_obLinkDir}
+    ${GNUWIN32_DIR}/lib
+  )
 
-# Look for the library.
-find_library(MODBUS_LIBRARY
-        NAMES
-        libmodbus.lib
-        libmodbus.a
-        HINTS
-        "${MODBUS_ROOT_DIR}"
-        PATH_SUFFIXES
-        ${_libsuffixes}
-        PATHS
-        "${_progfiles}/libmodbus"
-        C:/usr/local
-        /usr/local)
+ set(CMAKE_REQUIRED_INCLUDES ${MODBUS_INCLUDE_DIR})
+ set(CMAKE_REQUIRED_LIBRARIES ${MODBUS_LIBRARIES})
 
-# handle the QUIETLY and REQUIRED arguments and set MODBUS_FOUND to TRUE if
-# all listed variables are TRUE
-include(FindPackageHandleStandardArgs)
-find_package_handle_standard_args(Modbus
-        DEFAULT_MSG
-        MODBUS_LIBRARY
-        MODBUS_INCLUDE_DIR)
+   if(MODBUS_INCLUDE_DIR AND MODBUS_LIBRARIES)
+    set(MODBUS_FOUND TRUE)
+  else (MODBUS_INCLUDE_DIR AND MODBUS_LIBRARIES)
+    set(MODBUS_FOUND FALSE)
+  endif(MODBUS_INCLUDE_DIR AND MODBUS_LIBRARIES)
 
-if(MODBUS_FOUND)
-    set(MODBUS_LIBRARIES ${MODBUS_LIBRARY})
-    set(MODBUS_INCLUDE_DIRS ${MODBUS_INCLUDE_DIR})
+  if (MODBUS_FOUND)
+    if (NOT MODBUS_FIND_QUIETLY)
+      message(STATUS "Found libmodbus: ${MODBUS_LIBRARIES}")
+    endif (NOT MODBUS_FIND_QUIETLY)
+  else (MODBUS_FOUND)
+    if (MODBUS_FIND_REQUIRED)
+      message(FATAL_ERROR "libmodbus not found. Please install libmodbus-devel. https://launchpad.net/libmodbus/")
+    endif (MODBUS_FIND_REQUIRED)
+  endif (MODBUS_FOUND)
 
-    mark_as_advanced(MODBUS_ROOT_DIR)
-else()
-    set(MODBUS_LIBRARIES)
-    set(MODBUS_INCLUDE_DIRS)
-endif()
+  mark_as_advanced(MODBUS_INCLUDE_DIR MODBUS_LIBRARIES)
 
-mark_as_advanced(MODBUS_LIBRARY MODBUS_INCLUDE_DIR)
+endif (MODBUS_INCLUDE_DIR AND MODBUS_LIBRARIES)

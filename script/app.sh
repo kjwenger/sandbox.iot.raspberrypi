@@ -12,6 +12,7 @@ STAGING_DIR="${PROJECT_DIR}/staging"
 cd "${PROJECT_DIR}"
 mkdir -p build
 pushd build
+rm -Rf *
 cmake -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON \
       ..
 make -j ${CPUS}

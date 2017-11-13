@@ -24,24 +24,16 @@ include_directories(
 
 find_package(Modbus)
 
-if(MODBUS_FOUND)
-    message("Modbus includes found at ${MODBUS_INCLUDE_DIRS} and library at ${MODBUS_LIBRARY}")
-else()
-    set(MODBUS_INCLUDE_DIRS ${CMAKE_PREFIX_PATH}/include/modbus)
-    set(MODBUS_LIBRARY ${CMAKE_PREFIX_PATH}/lib/libmodbus.so)
-    message("Modbus includes set to ${MODBUS_INCLUDE_DIRS} and library to ${MODBUS_LIBRARY}")
-endif()
-
 add_executable(modbus-master
         src/modbus-master.c
 )
 target_include_directories(modbus-master PUBLIC
         ${CMAKE_PREFIX_PATH}/local/include
         ${CMAKE_PREFIX_PATH}/include
-        ${MODBUS_INCLUDE_DIRS}
+        ${MODBUS_INCLUDE_DIR}
 )
 target_link_libraries(modbus-master
-        ${MODBUS_LIBRARY}
+        ${MODBUS_LIBRARIES}
 )
 
 add_executable(modbus-slave
@@ -50,10 +42,10 @@ add_executable(modbus-slave
 target_include_directories(modbus-slave PUBLIC
         ${CMAKE_PREFIX_PATH}/local/include
         ${CMAKE_PREFIX_PATH}/include
-        ${MODBUS_INCLUDE_DIRS}
+        ${MODBUS_INCLUDE_DIR}
 )
 target_link_libraries(modbus-slave
-        ${MODBUS_LIBRARY}
+        ${MODBUS_LIBRARIES}
 )
 
 find_package(Threads)
@@ -63,9 +55,9 @@ add_executable(test_485
 target_include_directories(test_485 PUBLIC
         ${CMAKE_PREFIX_PATH}/local/include
         ${CMAKE_PREFIX_PATH}/include
-        ${MODBUS_INCLUDE_DIRS}
+        ${MODBUS_INCLUDE_DIR}
 )
 target_link_libraries(test_485
-        ${MODBUS_LIBRARY}
+        ${MODBUS_LIBRARIES}
         ${CMAKE_THREAD_LIBS_INIT}
 )

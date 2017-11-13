@@ -17,6 +17,8 @@ mkdir -p "${BUILD_DIR}"
 pushd "${BUILD_DIR}"
 rm -Rf *
 cmake \
+      -DMODBUS_INCLUDE_DIR="${STAGING_DIR}/include" \
+      -DMODBUS_LIBRARIES="${STAGING_DIR}/lib/libmodbus.so" \
       -DOPENSSL_ROOT_DIR="${STAGING_DIR}" \
       -DOPENSSL_FOUND=true \
       -DOPENSSL_INCLUDE_DIR="${STAGING_DIR}/include" \
@@ -25,13 +27,14 @@ cmake \
       -DOPENSSL_SSL_LIBRARY="${STAGING_DIR}/lib/libssl.so" \
       -DOPENSSL_SSL_LIBRARIES="${STAGING_DIR}/lib/libssl.so" \
       -DOPENSSL_LIBRARIES="${STAGING_DIR}/lib/libcrypto.so;${STAGING_DIR}/lib/libssl.so" \
-      -DMOSQUITTO_INCLUDE_DIRS="${STAGING_DIR}/include" \
+      -DMOSQUITTO_INCLUDE_DIR="${STAGING_DIR}/include" \
       -DMOSQUITTO_LIBRARY="${STAGING_DIR}/lib/libmosquitto.so" \
-      -DMOSQUITTOPP_INCLUDE_DIRS="${STAGING_DIR}/include" \
+      -DMOSQUITTOPP_INCLUDE_DIR="${STAGING_DIR}/include" \
       -DMOSQUITTOPP_LIBRARY="${STAGING_DIR}/lib/libmosquittopp.so" \
       -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON \
       -DCMAKE_TOOLCHAIN_FILE="${PROJECT_DIR}/toolchains/${MULTIARCH_TUPLE}.cmake" \
       -DCMAKE_INSTALL_PREFIX="${STAGING_DIR}" \
+      -DCMAKE_EXE_LINKER_FLAGS="-Wl,-rpath-link ${STAGING_DIR}/lib" \
       ..
 make -j ${CPUS}
 popd

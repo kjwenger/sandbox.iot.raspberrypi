@@ -17,6 +17,6 @@ void Mosquitto::on_connect(int rc) {
 void Mosquitto::on_message(const struct mosquitto_message *message) {
 
 }
-void Mosquitto::on_subscribe(uint16_t mid, int qos_count, const uint8_t * granted_qos) {
+void Mosquitto::on_subscribe(int mid, int qos_count, const int * granted_qos) {
 
 }
