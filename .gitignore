@@ -51,3 +51,6 @@ build-arm-bcm2708hardfp-linux-gnueabi/
 build-armv6-rpi-linux-gnueabi/
 build-armv7-rpi2-linux-gnueabihf/
 build-armv8-rpi3-linux-gnueabihf/
+
+# Downloads
+/image/
